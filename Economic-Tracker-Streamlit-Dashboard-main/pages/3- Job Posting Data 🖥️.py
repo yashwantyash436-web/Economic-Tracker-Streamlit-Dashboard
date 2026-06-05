@@ -38,8 +38,9 @@ st.write('---')  # Add a separator
 
 # Read Chart Data, Show as time-series chart. 
 
-data = pd.read_csv("Datas/Chart Datas/job_df_chart.csv")
-
+data = pd.read_csv(
+    BASE_DIR / "Datas" / "Chart Datas" / "spend_df_chart.csv"
+)
 # Apply groupby over name sort by date_index 
 data = data.groupby(['name']).apply(lambda x: x.sort_values(['date_index'], ascending = True)).reset_index(drop=True)
 data.set_index('date_index',inplace=True)
