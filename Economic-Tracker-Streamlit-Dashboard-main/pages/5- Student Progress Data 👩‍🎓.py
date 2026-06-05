@@ -25,8 +25,16 @@ st.markdown("""
 """)
 
 
-HtmlFile = open(html_file, 'r', encoding='utf-8')
-source_code = HtmlFile.read()
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+html_file = BASE_DIR / "Datas" / "Maps" / "page1_map.html"
+
+with open(html_file, "r", encoding="utf-8") as HtmlFile:
+    source_code = HtmlFile.read()
+
+st.components.v1.html(source_code, height=600)
+st.write('---')
 st.components.v1.html(source_code, height=600)
 st.write('---')  # Add a separator
 

@@ -16,8 +16,17 @@ st.markdown(""" **spend_all:**  The 'spend_all' column likely represents the amo
             "It reflects the total spending or sales figures for that particular region and may be expressed in currency (e.g., dollars). "
             "The 'spend_all' column provides information on economic activity related to credit/debit card transactions within the county.""")
 
-HtmlFile = open(html_file, 'r', encoding='utf-8')
-source_code = HtmlFile.read()
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+html_file = BASE_DIR / "Datas" / "Maps" / "page1_map.html"
+
+with open(html_file, "r", encoding="utf-8") as HtmlFile:
+    source_code = HtmlFile.read()
+
+st.components.v1.html(source_code, height=600)
+st.write('---')
+
 st.components.v1.html(source_code, height=600)
 st.write('---')  # Add a separator
 
